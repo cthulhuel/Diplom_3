@@ -8,7 +8,6 @@ public class LoginPage {
 
     private By fieldEmail = By.xpath(".//input[@name='name']");
     private By fieldPassword = By.xpath(".//input[@name='Пароль']");
-
     private By buttonEnterMain = By.xpath(".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg']");
     private By buttonEnterModal = By.xpath(".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']");
     private By buttonEnterPersonal = By.xpath(".//a[@href='/account']");
@@ -24,16 +23,16 @@ public class LoginPage {
     public void clickButtonEnterRegistration () { driver.findElement(buttonEnterRegistration).click(); }
     public void clickButtonEnterForgot () { driver.findElement(buttonEnterForgot).click(); }
 
-    public void enterEmail (String Name) {
+    public void enterEmail (String Email) {
         new WebDriverWait(driver, 3);
         driver.findElement(fieldEmail).click();
-        driver.findElement(fieldEmail).sendKeys(Name);
+        driver.findElement(fieldEmail).sendKeys(Email);
     }
 
-    public void enterPassword (String Name) {
+    public void enterPassword (String Password) {
         new WebDriverWait(driver, 3);
         driver.findElement(fieldPassword).click();
-        driver.findElement(fieldPassword).sendKeys(Name);
+        driver.findElement(fieldPassword).sendKeys(Password);
     }
 
 }
