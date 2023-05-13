@@ -33,12 +33,13 @@ public class TestLogin {
         WebDriverManager.chromedriver().setup();
 
         driver = new ChromeDriver();
-        driver.get("https://stellarburgers.nomoreparties.site/login");
+        driver.get("https://stellarburgers.nomoreparties.site");
 
         LoginPage objLoginPage = new LoginPage(driver);
+        objLoginPage.clickButtonEnterMain();
         objLoginPage.enterEmail(Email);
         objLoginPage.enterPassword(Password);
-        objLoginPage.clickButtonEnter();
+        objLoginPage.clickButtonEnterModal();
 
         driver.quit();
     }
