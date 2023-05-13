@@ -65,7 +65,4 @@ public class TestRegister {
         driver.quit();
     }
 
-
-
-
 }
