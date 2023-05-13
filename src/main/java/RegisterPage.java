@@ -11,7 +11,6 @@ public class RegisterPage {
     private By fieldEmail = By.xpath(".//label[text()='Email']/../input");
     private By fieldPassword = By.xpath(".//input[@name='Пароль']");
     private By buttonRegister = By.xpath(".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa']");
-
     private By labelIncorrectPassword = By.xpath(".//p[@class='input__error text_type_main-default']");
 
     public RegisterPage(WebDriver driver) { this.driver = driver; }
