@@ -4,10 +4,23 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-public class TestConstructorSection extends BaseTest {
+public class TestConstructorSection {
 
     private WebDriver driver;
+
+    @Before
+    public void setUp() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.get(ConstructorSection.URL);
+    }
+
+    @After
+    public void setDown() {
+        driver.quit();
+    }
 
     @Test
     @DisplayName("Проверка перехода из личного кабинета в конструктор по клику на «Конструктор»")
@@ -52,7 +65,6 @@ public class TestConstructorSection extends BaseTest {
         ConstructorSection objConstructorSection = new ConstructorSection(driver);
         objConstructorSection.clickLabelSauces();
         objConstructorSection.verifyLoadSauces();
-
     }
 
     @Test
