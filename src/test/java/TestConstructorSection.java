@@ -4,7 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestConstructorSection {
 
@@ -13,7 +12,7 @@ public class TestConstructorSection {
     @Before
     public void setUp() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        driver = WebDriverCreator.createWebDriver();
         driver.get(ConstructorSection.URL);
     }
 
