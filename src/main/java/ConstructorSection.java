@@ -2,6 +2,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import static org.junit.Assert.assertTrue;
 
 public class ConstructorSection {
 
@@ -13,15 +14,14 @@ public class ConstructorSection {
     private By labelBuns = By.xpath("//*[text()='Булки']/.");
     private By labelSauces = By.xpath("//*[text()='Соусы']/.");
     private By labelFillings = By.xpath("//*[text()='Начинки']/.");
-    private By kratornayaBun = By.xpath("//*[text()='Краторная булка N-200i']/.");
-    private By antarianSauce = By.xpath("//*[text()='Соус с шипами Антарианского плоскоходца']/.");
-    private By tetraodontymformFilling = By.xpath("//*[text()='Филе Люминесцентного тетраодонтимформа']/.");
+    private By labelBunsSelected = By.xpath(".//div[@Class='BurgerIngredients_ingredients__menuContainer__Xu3Mo']/h2[text()='Булки']");
+    private By labelSaucesSelected = By.xpath(".//div[@Class='BurgerIngredients_ingredients__menuContainer__Xu3Mo']/h2[text()='Соусы']");
+    private By labelFillingsSelected = By.xpath(".//div[@Class='BurgerIngredients_ingredients__menuContainer__Xu3Mo']/h2[text()='Начинки']");
 
     public ConstructorSection(WebDriver driver) { this.driver = driver; }
 
     public void clickLabelConstructor() { driver.findElement(labelConstructor).click(); }
     public void clickLogoStellarBurgers() { driver.findElement(logoStellarBurgers).click(); }
-
     public void clickLabelBuns() { driver.findElement(labelBuns).click(); }
     public void clickLabelSauces() { driver.findElement(labelSauces).click(); }
     public void clickLabelFillings() { driver.findElement(labelFillings).click(); }
@@ -33,25 +33,19 @@ public class ConstructorSection {
         Assert.assertEquals("Текст не соответствует ожидаемому результату", ExpectedText, ActualText);
     }
 
-        public void verifyLoadBuns() {
-        new WebDriverWait(driver, 10).until(driver -> (driver.findElement(kratornayaBun).getText() != null));
-        String ExpectedText = "Краторная булка N-200i";
-        String ActualText = driver.findElement(kratornayaBun).getText();
-        Assert.assertEquals("Текст не соответствует ожидаемому результату", ExpectedText, ActualText);
-    }
+    public void verifyLoadBuns() {
+        new WebDriverWait(driver, 10).until(driver -> (driver.findElement(labelBuns).getText() != null));
+        assertTrue(driver.findElement(labelBunsSelected).isDisplayed());
+        }
 
     public void verifyLoadSauces() {
-        new WebDriverWait(driver, 10).until(driver -> (driver.findElement(antarianSauce).getText() != null));
-        String ExpectedText = "Соус с шипами Антарианского плоскоходца";
-        String ActualText = driver.findElement(antarianSauce).getText();
-        Assert.assertEquals("Текст не соответствует ожидаемому результату", ExpectedText, ActualText);
+        new WebDriverWait(driver, 10).until(driver -> (driver.findElement(labelSauces).getText() != null));
+        assertTrue(driver.findElement(labelSaucesSelected).isDisplayed());
     }
 
     public void verifyLoadFillings() {
-        new WebDriverWait(driver, 10).until(driver -> (driver.findElement(tetraodontymformFilling).getText() != null));
-        String ExpectedText = "Филе Люминесцентного тетраодонтимформа";
-        String ActualText = driver.findElement(tetraodontymformFilling).getText();
-        Assert.assertEquals("Текст не соответствует ожидаемому результату", ExpectedText, ActualText);
+        new WebDriverWait(driver, 10).until(driver -> (driver.findElement(labelFillings).getText() != null));
+        assertTrue(driver.findElement(labelFillingsSelected).isDisplayed());
     }
 
 }
