@@ -1,5 +1,7 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -28,41 +30,37 @@ public class TestRegister {
 
     private WebDriver driver;
 
+    @Before
+    public void setUp() {
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.get("https://stellarburgers.nomoreparties.site/");
+    }
+
+    @After
+    public void setDown() {
+        driver.quit();
+    }
+
     @Test
     @DisplayName("Проверка успешной регистрации")
     public void testSuccessRegister() {
-
-        WebDriverManager.chromedriver().setup();
-
-        driver = new ChromeDriver();
-        driver.get("https://stellarburgers.nomoreparties.site/register");
-
         RegisterPage objRegisterPage = new RegisterPage(driver);
         objRegisterPage.enterName(Name);
         objRegisterPage.enterEmail(Email);
         objRegisterPage.enterPassword(Password);
         objRegisterPage.clickButtonRegister();
-
-        driver.quit();
     }
 
     @Test
     @DisplayName("Проверка ошибки для некорректного пароля")
     public void testErrorRegisterWithIncorrectPassword() {
-
-        WebDriverManager.chromedriver().setup();
-
-        driver = new ChromeDriver();
-        driver.get("https://stellarburgers.nomoreparties.site/register");
-
         RegisterPage objRegisterPage = new RegisterPage(driver);
         objRegisterPage.enterName("TestName");
         objRegisterPage.enterEmail("TestEmail@email.com");
         objRegisterPage.enterPassword("12345");
         objRegisterPage.clickButtonRegister();
         objRegisterPage.verifyErrorRegisterWithIncorrectPassword();
-
-        driver.quit();
     }
 
 }
