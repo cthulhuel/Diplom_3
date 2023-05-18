@@ -6,7 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ConstructorSection {
 
     private WebDriver driver;
-
+    final static String URL = "https://stellarburgers.nomoreparties.site/";
     private By labelAbout = By.xpath(".//h1[@class='text text_type_main-large mb-5 mt-10']");
     private By labelConstructor = By.xpath(".//a[@href='/']");
     private By logoStellarBurgers = By.xpath("//*[@xmlns='http://www.w3.org/2000/svg']");

@@ -32,7 +32,7 @@ public class TestLogin {
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("https://stellarburgers.nomoreparties.site/");
+        driver.get(ConstructorSection.URL);
     }
 
     @After
