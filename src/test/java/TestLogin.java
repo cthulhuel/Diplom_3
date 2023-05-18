@@ -1,15 +1,11 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Parameterized.class)
-public class TestLogin {
+public class TestLogin extends BaseTest {
 
     private final String Email;
     private final String Password;
@@ -27,18 +23,6 @@ public class TestLogin {
     }
 
     private WebDriver driver;
-
-    @Before
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get(ConstructorSection.URL);
-    }
-
-    @After
-    public void setDown() {
-        driver.quit();
-    }
 
     @Test
     @DisplayName("Вход по кнопке «Войти в аккаунт» на главной")

@@ -4,23 +4,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class TestConstructorSection {
+public class TestConstructorSection extends BaseTest {
 
     private WebDriver driver;
-
-    @Before
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get(ConstructorSection.URL);
-    }
-
-    @After
-    public void setDown() {
-        driver.quit();
-    }
 
     @Test
     @DisplayName("Проверка перехода из личного кабинета в конструктор по клику на «Конструктор»")

@@ -1,15 +1,11 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Parameterized.class)
-public class TestRegister {
+public class TestRegister extends BaseTest {
 
     private final String Name;
     private final String Email;
@@ -29,18 +25,6 @@ public class TestRegister {
     }
 
     private WebDriver driver;
-
-    @Before
-    public void setUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.get(ConstructorSection.URL);
-    }
-
-    @After
-    public void setDown() {
-        driver.quit();
-    }
 
     @Test
     @DisplayName("Проверка успешной регистрации")
