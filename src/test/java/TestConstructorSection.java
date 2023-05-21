@@ -55,15 +55,15 @@ public class TestConstructorSection {
         ConstructorSection objConstructorSection = new ConstructorSection(driver);
         objConstructorSection.clickLabelSauces();
         objConstructorSection.clickLabelBuns();
-        objConstructorSection.verifyLoadBuns();
+        objConstructorSection.checkVisibleBun();
     }
 
     @Test
     @DisplayName("Проверка перехода к разделу «Соусы»")
     public void testEntrySauces() {
         ConstructorSection objConstructorSection = new ConstructorSection(driver);
-        objConstructorSection.clickLabelSauces();
-        objConstructorSection.verifyLoadSauces();
+       objConstructorSection.clickLabelSauces();
+        objConstructorSection.checkVisibleSauces();
     }
 
     @Test
@@ -71,7 +71,7 @@ public class TestConstructorSection {
     public void testEntryFillings() {
         ConstructorSection objConstructorSection = new ConstructorSection(driver);
         objConstructorSection.clickLabelFillings();
-        objConstructorSection.verifyLoadFillings();
+        objConstructorSection.checkVisibleFillings();
     }
 
 }

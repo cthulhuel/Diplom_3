@@ -2,7 +2,6 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static org.junit.Assert.assertTrue;
 
 public class ConstructorSection {
 
@@ -12,11 +11,11 @@ public class ConstructorSection {
     private By labelConstructor = By.xpath(".//a[@href='/']");
     private By logoStellarBurgers = By.xpath("//*[@xmlns='http://www.w3.org/2000/svg']");
     private By labelBuns = By.xpath("//*[text()='Булки']/.");
+    private By labelBunVisible = By.xpath("//div[contains(span/text(),'Булки') and contains(@class,'current')]");
     private By labelSauces = By.xpath("//*[text()='Соусы']/.");
+    private By labelSauceVisible = By.xpath("//div[contains(span/text(),'Соусы') and contains(@class,'current')]");
     private By labelFillings = By.xpath("//*[text()='Начинки']/.");
-    private By labelBunsSelected = By.xpath(".//div[@Class='BurgerIngredients_ingredients__menuContainer__Xu3Mo']/h2[text()='Булки']");
-    private By labelSaucesSelected = By.xpath(".//div[@Class='BurgerIngredients_ingredients__menuContainer__Xu3Mo']/h2[text()='Соусы']");
-    private By labelFillingsSelected = By.xpath(".//div[@Class='BurgerIngredients_ingredients__menuContainer__Xu3Mo']/h2[text()='Начинки']");
+    private By labelFillingVisible = By.xpath("//div[contains(span/text(),'Начинки') and contains(@class,'current')]");
 
     public ConstructorSection(WebDriver driver) { this.driver = driver; }
 
@@ -33,19 +32,16 @@ public class ConstructorSection {
         Assert.assertEquals("Текст не соответствует ожидаемому результату", ExpectedText, ActualText);
     }
 
-    public void verifyLoadBuns() {
-        new WebDriverWait(driver, 10).until(driver -> (driver.findElement(labelBuns).getText() != null));
-        assertTrue(driver.findElement(labelBunsSelected).isDisplayed());
-        }
-
-    public void verifyLoadSauces() {
-        new WebDriverWait(driver, 10).until(driver -> (driver.findElement(labelSauces).getText() != null));
-        assertTrue(driver.findElement(labelSaucesSelected).isDisplayed());
+    public Boolean checkVisibleBun() {
+        return driver.findElement(labelBunVisible).isDisplayed();
     }
 
-    public void verifyLoadFillings() {
-        new WebDriverWait(driver, 10).until(driver -> (driver.findElement(labelFillings).getText() != null));
-        assertTrue(driver.findElement(labelFillingsSelected).isDisplayed());
+    public Boolean checkVisibleSauces() {
+        return driver.findElement(labelSauceVisible).isDisplayed();
+    }
+
+    public Boolean checkVisibleFillings() {
+        return driver.findElement(labelFillingVisible).isDisplayed();
     }
 
 }
