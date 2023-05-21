@@ -1,5 +1,6 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.junit4.DisplayName;
+import io.restassured.response.Response;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Parameterized.class)
 public class TestRegister {
-
+    public String accessToken;
     private final String Name;
     private final String Email;
     private final String Password;
@@ -24,7 +25,7 @@ public class TestRegister {
     @Parameterized.Parameters
     public static Object[][] enterData() {
         return new Object[][] {
-                { "evgeny", "eliseev_23@gmail.com", "qwerty124" },
+                { "evgeny", "eliseev_2366@gmail.com", "qwerty124" },
         };
     }
 
@@ -50,6 +51,12 @@ public class TestRegister {
         objRegisterPage.enterEmail(Email);
         objRegisterPage.enterPassword(Password);
         objRegisterPage.clickButtonRegister();
+
+        DeleteUser deleteUser = new DeleteUser();
+        Response correctLoginWithExistingUser = deleteUser.getDataUser(new User(Email,Password, Name));
+        accessToken = correctLoginWithExistingUser.path("accessToken");
+        deleteUser.getDeleteUser(accessToken);
+
     }
 
     @Test
